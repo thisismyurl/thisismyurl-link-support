@@ -7,7 +7,7 @@ Tags: links, external links, nofollow, seo, target blank, link support
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.260101
+Stable tag: 1.26010212
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 GitHub Plugin URI: https://github.com/thisismyurl/thisismyurl-link-support
@@ -41,6 +41,18 @@ No. [cite: 17] The plugin uses the `the_content` filter to modify the output of 
 Yes. [cite: 1] Since this plugin utilizes the Shared Core Library, it shares resources and a consistent UI with our WebP, SVG, and HEIC support tools. [cite: 1]
 
 == Changelog ==
+
+= 1.26010212 =
+* TIMU_Core updated to version 1.26010212
+
+= 1.26010212 =
+* TIMU_Core updated to version 1.26010212
+
+= 1.26010212 =
+* TIMU_Core updated to version 1.26010212
+
+= 1.26010212 =
+* TIMU_Core updated to version 1.26010212
 
 = 1.260101 =
 * Renamed plugin from "External Link Control" to "Link Support".
