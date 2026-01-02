@@ -1,10 +1,10 @@
 <?php
 /**
  * Author:              Christopher Ross
- * Author URI:          https://thisismyurl.com/?source=thisismyurl-link-support
+ * Author URI:          https://thisismyurl.com/?source=link-support-thisismyurl
  * Plugin Name:         Link Support by thisismyurl.com
- * Plugin URI:          https://thisismyurl.com/thisismyurl-link-support/?source=thisismyurl-link-support
- * Donate link:         https://thisismyurl.com/donate/?source=thisismyurl-link-support
+ * Plugin URI:          https://thisismyurl.com/link-support-thisismyurl/?source=link-support-thisismyurl
+ * Donate link:         https://thisismyurl.com/donate/?source=link-support-thisismyurl
  * 
  * Description:         The ultimate suite for link management: Custom Link Post Type with Meta Fields, Force New Tab, SEO support, Internal Link indicators, and Heatmap Analytics.
  * Tags:                links, seo, internal-links, badges, analytics, heatmap, security, exit-monitor, external-links, target-blank
@@ -13,10 +13,10 @@
  * Requires at least:   6.0
  * Requires PHP:        7.4
  * 
- * Update URI:          https://github.com/thisismyurl/thisismyurl-link-support
- * GitHub Plugin URI:   https://github.com/thisismyurl/thisismyurl-link-support
+ * Update URI:          https://github.com/thisismyurl/link-support-thisismyurl
+ * GitHub Plugin URI:   https://github.com/thisismyurl/link-support-thisismyurl
  * Primary Branch:      main
- * Text Domain:         thisismyurl-link-support
+ * Text Domain:         link-support-thisismyurl
  * 
  * License:             GPL2
  * License URI:         https://www.gnu.org/licenses/gpl-2.0.html
@@ -51,7 +51,7 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
 
     public function __construct() {
         parent::__construct( 
-            'thisismyurl-link-support', 
+            'link-support-thisismyurl', 
             plugin_dir_url( __FILE__ ), 
             'timu_ls_settings_group', 
             '', 
@@ -117,12 +117,12 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
     public function set_link_table_columns( $columns ) {
         return array(
             'cb'            => $columns['cb'],
-            'title'         => __( 'Link Name', 'thisismyurl-link-support' ),
-            'dest_url'      => __( 'Destination URL', 'thisismyurl-link-support' ),
-            'dest_age'      => __( 'Destination Age', 'thisismyurl-link-support' ), // New Column
-            'is_active'     => __( 'Active', 'thisismyurl-link-support' ),
-            'usage_count'   => __( 'Usage', 'thisismyurl-link-support' ),
-            'clicks'        => __( 'Clicks', 'thisismyurl-link-support' ),
+            'title'         => __( 'Link Name', 'link-support-thisismyurl' ),
+            'dest_url'      => __( 'Destination URL', 'link-support-thisismyurl' ),
+            'dest_age'      => __( 'Destination Age', 'link-support-thisismyurl' ), // New Column
+            'is_active'     => __( 'Active', 'link-support-thisismyurl' ),
+            'usage_count'   => __( 'Usage', 'link-support-thisismyurl' ),
+            'clicks'        => __( 'Clicks', 'link-support-thisismyurl' ),
             'date'          => $columns['date'],
         );
     }
@@ -211,7 +211,7 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
 
     public function render_title_directions( $post ) {
         if ( 'timu_links' === $post->post_type ) {
-            echo '<p class="description" style="margin-top: 5px; margin-bottom: 20px;">' . esc_html__( 'Please enter the name of the website (e.g., Google or Facebook).', 'thisismyurl-link-support' ) . '</p>';
+            echo '<p class="description" style="margin-top: 5px; margin-bottom: 20px;">' . esc_html__( 'Please enter the name of the website (e.g., Google or Facebook).', 'link-support-thisismyurl' ) . '</p>';
         }
     }
 
@@ -223,23 +223,23 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
 
     public function register_link_cpt() {
         $labels = array(
-            'name'               => _x( 'Links', 'post type general name', 'thisismyurl-link-support' ),
-            'singular_name'      => _x( 'Link', 'post type singular name', 'thisismyurl-link-support' ),
-            'menu_name'          => _x( 'Links', 'admin menu', 'thisismyurl-link-support' ),
-            'add_new'            => _x( 'Add New', 'link', 'thisismyurl-link-support' ),
-            'add_new_item'       => __( 'Add New Link Entry', 'thisismyurl-link-support' ),
-            'edit_item'          => __( 'Edit Link Entry', 'thisismyurl-link-support' ),
-            'all_items'          => __( 'All Links', 'thisismyurl-link-support' ),
+            'name'               => _x( 'Links', 'post type general name', 'link-support-thisismyurl' ),
+            'singular_name'      => _x( 'Link', 'post type singular name', 'link-support-thisismyurl' ),
+            'menu_name'          => _x( 'Links', 'admin menu', 'link-support-thisismyurl' ),
+            'add_new'            => _x( 'Add New', 'link', 'link-support-thisismyurl' ),
+            'add_new_item'       => __( 'Add New Link Entry', 'link-support-thisismyurl' ),
+            'edit_item'          => __( 'Edit Link Entry', 'link-support-thisismyurl' ),
+            'all_items'          => __( 'All Links', 'link-support-thisismyurl' ),
         );
         register_post_type( 'timu_links', array( 'labels' => $labels, 'public' => true, 'show_ui' => true, 'show_in_menu' => true, 'menu_position' => 20, 'menu_icon' => 'dashicons-admin-links', 'supports' => array( 'title' ), 'show_in_rest' => true ) );
     }
 
     public function add_link_meta_boxes() {
-        add_meta_box( 'timu_link_details', __( 'Link Configuration', 'thisismyurl-link-support' ), array( $this, 'render_link_meta_box' ), 'timu_links', 'normal', 'high' );
-        add_meta_box( 'timu_link_automation', __( 'Link Automation', 'thisismyurl-link-support' ), array( $this, 'render_automation_meta_box' ), 'timu_links', 'normal', 'default' );
-        add_meta_box( 'timu_link_usage_list', __( 'Active Locations', 'thisismyurl-link-support' ), array( $this, 'render_usage_meta_box' ), 'timu_links', 'normal', 'default' );
-        add_meta_box( 'timu_link_click_log', __( 'Click Log', 'thisismyurl-link-support' ), array( $this, 'render_click_log_meta_box' ), 'timu_links', 'normal', 'default' );
-        add_meta_box( 'timu_link_sidebar_tools', __( 'Link Support Tools', 'thisismyurl-link-support' ), array( $this, 'render_cpt_sidebar_box' ), 'timu_links', 'side', 'default' );
+        add_meta_box( 'timu_link_details', __( 'Link Configuration', 'link-support-thisismyurl' ), array( $this, 'render_link_meta_box' ), 'timu_links', 'normal', 'high' );
+        add_meta_box( 'timu_link_automation', __( 'Link Automation', 'link-support-thisismyurl' ), array( $this, 'render_automation_meta_box' ), 'timu_links', 'normal', 'default' );
+        add_meta_box( 'timu_link_usage_list', __( 'Active Locations', 'link-support-thisismyurl' ), array( $this, 'render_usage_meta_box' ), 'timu_links', 'normal', 'default' );
+        add_meta_box( 'timu_link_click_log', __( 'Click Log', 'link-support-thisismyurl' ), array( $this, 'render_click_log_meta_box' ), 'timu_links', 'normal', 'default' );
+        add_meta_box( 'timu_link_sidebar_tools', __( 'Link Support Tools', 'link-support-thisismyurl' ), array( $this, 'render_cpt_sidebar_box' ), 'timu_links', 'side', 'default' );
     }
 
     public function render_link_meta_box( $post ) {
@@ -248,7 +248,7 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
         ?>
         <table class="form-table">
             <tr>
-                <th><label for="timu_link_url"><?php _e( 'Destination URL', 'thisismyurl-link-support' ); ?></label></th>
+                <th><label for="timu_link_url"><?php _e( 'Destination URL', 'link-support-thisismyurl' ); ?></label></th>
                 <td><input type="url" name="timu_link_url" id="timu_link_url" value="<?php echo esc_url( $url ); ?>" class="large-text" placeholder="https://example.com" required /></td>
             </tr>
         </table>
@@ -263,15 +263,15 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
         ?>
         <table class="form-table">
             <tr>
-                <th><?php _e( 'Auto-Replace Title', 'thisismyurl-link-support' ); ?></th>
+                <th><?php _e( 'Auto-Replace Title', 'link-support-thisismyurl' ); ?></th>
                 <td><label class="timu-switch"><input type="checkbox" name="timu_auto_replace" value="1" <?php checked($auto_replace, 1); ?> /><span class="timu-slider"></span></label></td>
             </tr>
             <tr>
-                <th><?php _e( 'Case Sensitive', 'thisismyurl-link-support' ); ?></th>
+                <th><?php _e( 'Case Sensitive', 'link-support-thisismyurl' ); ?></th>
                 <td><label class="timu-switch"><input type="checkbox" name="timu_case_sensitive" value="1" <?php checked($case_sensitive, 1); ?> /><span class="timu-slider"></span></label></td>
             </tr>
             <tr>
-                <th><label for="timu_link_alias"><?php _e( 'Link Alias', 'thisismyurl-link-support' ); ?></label></th>
+                <th><label for="timu_link_alias"><?php _e( 'Link Alias', 'link-support-thisismyurl' ); ?></label></th>
                 <td><input type="text" name="timu_link_alias" id="timu_link_alias" value="<?php echo esc_attr($alias); ?>" class="large-text" placeholder="Facebook Profile, FB Page" /></td>
             </tr>
         </table>
@@ -280,7 +280,7 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
 
     public function render_usage_meta_box( $post ) {
         $posts = $this->get_active_post_list( $post->ID );
-        if ( empty($posts) ) { echo '<p>' . esc_html__( 'No active locations found.', 'thisismyurl-link-support' ) . '</p>'; return; }
+        if ( empty($posts) ) { echo '<p>' . esc_html__( 'No active locations found.', 'link-support-thisismyurl' ) . '</p>'; return; }
         echo '<div class="usage-log-container"><ul>';
         foreach ( $posts as $id => $title ) {
             $link = get_edit_post_link($id);
@@ -291,7 +291,7 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
 
     public function render_click_log_meta_box( $post ) {
         $log = get_post_meta( $post->ID, '_timu_click_log', true ) ?: array();
-        if ( empty($log) ) { echo '<p>' . esc_html__( 'No clicks tracked.', 'thisismyurl-link-support' ) . '</p>'; return; }
+        if ( empty($log) ) { echo '<p>' . esc_html__( 'No clicks tracked.', 'link-support-thisismyurl' ) . '</p>'; return; }
         echo '<div class="click-log-box">';
         foreach ( $log as $ts ) { echo '[' . date( 'Y-m-d H:i:s', $ts ) . '] Link Clicked<br>'; }
         echo '</div>';
@@ -353,7 +353,7 @@ class TIMU_Link_Support extends TIMU_Core_v1 {
     }
 
     public function add_admin_menu() {
-        add_submenu_page( 'edit.php?post_type=timu_links', __( 'Link Support Settings', 'thisismyurl-link-support' ), __( 'Settings', 'thisismyurl-link-support' ), 'manage_options', $this->plugin_slug, array( $this, 'render_ui' ) );
+        add_submenu_page( 'edit.php?post_type=timu_links', __( 'Link Support Settings', 'link-support-thisismyurl' ), __( 'Settings', 'link-support-thisismyurl' ), 'manage_options', $this->plugin_slug, array( $this, 'render_ui' ) );
     }
 
     public function render_ui() {
