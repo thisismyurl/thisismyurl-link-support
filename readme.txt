@@ -43,6 +43,15 @@ Yes. [cite: 1] Since this plugin utilizes the Shared Core Library, it shares res
 == Changelog ==
 
 = 1.26010222 =
+* Core hierarchy updated via link-support-thisismyurl\link-support-thisismyurl.php
+
+= 1.26010222 =
+* Core hierarchy updated via link-support-thisismyurl\readme.txt
+
+= 1.26010222 =
+* Core hierarchy updated via link-support-thisismyurl\core
+
+= 1.26010222 =
 * Core hierarchy updated via link-support-thisismyurl\readme.txt
 
 = 1.26010222 =
