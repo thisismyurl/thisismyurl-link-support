@@ -1,4 +1,4 @@
-=== Link Support by thisismyurl.com ===
+﻿=== Link Support by thisismyurl.com ===
 Contributors: thisismyurl
 Donate link: https://thisismyurl.com/link-support-thisismyurl/#register
 Author: thisismyurl
